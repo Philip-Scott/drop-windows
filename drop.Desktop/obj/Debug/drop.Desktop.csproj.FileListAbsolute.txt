@@ -1,0 +1,5 @@
+C:\Users\Integrant\Documents\Visual Studio 2015\Projects\Drop\drop.Desktop\bin\Debug\drop.Desktop.dll
+C:\Users\Integrant\Documents\Visual Studio 2015\Projects\Drop\drop.Desktop\bin\Debug\drop.Desktop.pdb
+C:\Users\Integrant\Documents\Visual Studio 2015\Projects\Drop\drop.Desktop\obj\Debug\drop.Desktop.csprojResolveAssemblyReference.cache
+C:\Users\Integrant\Documents\Visual Studio 2015\Projects\Drop\drop.Desktop\obj\Debug\drop.Desktop.dll
+C:\Users\Integrant\Documents\Visual Studio 2015\Projects\Drop\drop.Desktop\obj\Debug\drop.Desktop.pdb
