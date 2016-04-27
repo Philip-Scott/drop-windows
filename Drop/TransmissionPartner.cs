@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Drop
-{
+namespace Drop { 
+
     /// <summary>
     /// Represents a transmission partner you can connect to.
     /// </summary>
-    class TransmissionPartner
-    {
+    public class TransmissionPartner {
         /// <summary>
         /// The name of the transmission partner, acting as an ID.
         /// </summary>
