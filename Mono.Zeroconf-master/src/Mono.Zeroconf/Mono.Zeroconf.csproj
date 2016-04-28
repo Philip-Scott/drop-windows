@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5CF88E3A-13DD-4114-BAD9-DA826946516F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mono.Zeroconf</RootNamespace>
+    <AssemblyName>Mono.Zeroconf</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\AssemblyInfo.cs" />
+    <Compile Include="Zeroconf.Providers\IZeroconfProvider.cs" />
+    <Compile Include="Zeroconf.Providers\ProviderFactory.cs" />
+    <Compile Include="Zeroconf.Providers\ZeroconfProviderAttribute.cs" />
+    <Compile Include="Zeroconf\IRegisterService.cs" />
+    <Compile Include="Zeroconf\IResolvableService.cs" />
+    <Compile Include="Zeroconf\IService.cs" />
+    <Compile Include="Zeroconf\IServiceBrowser.cs" />
+    <Compile Include="Zeroconf\ITxtRecord.cs" />
+    <Compile Include="Zeroconf\RegisterService.cs" />
+    <Compile Include="Zeroconf\RegisterServiceEventArgs.cs" />
+    <Compile Include="Zeroconf\RegisterServiceEventHandler.cs" />
+    <Compile Include="Zeroconf\ServiceBrowseEventArgs.cs" />
+    <Compile Include="Zeroconf\ServiceBrowseEventHandler.cs" />
+    <Compile Include="Zeroconf\ServiceBrowser.cs" />
+    <Compile Include="Zeroconf\ServiceErrorCode.cs" />
+    <Compile Include="Zeroconf\ServiceResolvedEventArgs.cs" />
+    <Compile Include="Zeroconf\ServiceResolvedEventHandler.cs" />
+    <Compile Include="Zeroconf\TxtRecord.cs" />
+    <Compile Include="Zeroconf\TxtRecordItem.cs" />
+    <Compile Include="Zeroconf\AddressProtocol.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
