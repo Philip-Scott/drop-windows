@@ -11,8 +11,7 @@ using Microsoft.Win32;
 
 namespace Drop
 {
-    public class RegistryDrop
-    {
+    public class RegistryDrop {
 
         private RegistryKey _baseReg { get; set; }
         public RegistryKey baseReg
@@ -52,13 +51,13 @@ namespace Drop
             this._mainKey.SetValue("Position", "Bottom");
         }
 
-        private void deleteAllPartners()
+        public void deleteAllPartners()
         {
             this._baseReg.DeleteSubKey("Software\\Test");
             Registry.ClassesRoot.DeleteSubKey(@"*\shell\Drop to the");
         }
 
-        private bool deletePartnerEntry(string hostName)
+        public bool deletePartnerEntry(string hostName)
         {
             object stringKeySubcommands = this._mainKey.GetValue("SubCommands");
             try
@@ -78,7 +77,7 @@ namespace Drop
             }
         }
 
-        private bool AddPartnerEntry(string hostName)
+        public bool AddPartnerEntry(string hostName)
         {
             object stringKeySubcommands=this._mainKey.GetValue("SubCommands");
 

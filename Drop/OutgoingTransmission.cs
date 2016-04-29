@@ -130,14 +130,14 @@ namespace Drop
 
         private bool recieve_initialisation ()
         {
-            UInt16[] package = receive_package(2);
+            //UInt16[] package = ;//receive_package(2);
 
-            if (package == null)
+            //if (package == null)
             {
                 return false;
             }
 
-            return send_package(package);
+            return false;// send_package(package);
         }
     }
 

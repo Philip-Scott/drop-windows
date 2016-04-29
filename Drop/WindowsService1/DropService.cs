@@ -14,6 +14,7 @@ namespace Drop.Service
     {
         private Timer timer = null;
 
+        private RegistryDrop reg_edit;
         private Mono.Zeroconf.ServiceBrowser browser;
         private Mono.Zeroconf.RegisterService service;
 
@@ -28,13 +29,15 @@ namespace Drop.Service
 
             browser.ServiceAdded += delegate (object o, Mono.Zeroconf.ServiceBrowseEventArgs args)
             {
-                string to_write = "Service found: " + args.Service.Name + " : " + args.Service.Port.ToString();
+                bool added = reg_edit.AddPartnerEntry(args.Service.Name);
+                string to_write = "Service found: " + args.Service.Name + " : " + added;
                 Service1.WirteLog(to_write);
             };
 
             browser.ServiceRemoved += delegate (object o, Mono.Zeroconf.ServiceBrowseEventArgs args)
             {
-                Service1.WirteLog("Service disconnected: ");
+                bool removed = reg_edit.deletePartnerEntry(args.Service.Name);
+                Service1.WirteLog("Service disconnected: " + args.Service.Name + " : " + removed);
             };
             browser.Browse("_drop._tcp", "local");
 
@@ -78,12 +81,15 @@ namespace Drop.Service
 
         protected override void OnStart(string[] args)
         {
+            reg_edit = new RegistryDrop();
+            reg_edit.deleteAllPartners();
             init_zeroconf();
             WirteLog("Initiated");
         }
 
         protected override void OnStop()
         {
+            reg_edit.deleteAllPartners();
             // TODO: Add code here to perform any tear-down necessary to stop your service.
         }
     }
