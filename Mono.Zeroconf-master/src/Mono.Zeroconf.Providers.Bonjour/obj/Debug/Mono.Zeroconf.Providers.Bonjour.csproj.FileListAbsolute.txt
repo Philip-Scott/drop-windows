@@ -1,0 +1,5 @@
+C:\Users\felipe\Documents\drop-windows\Mono.Zeroconf-master\bin\Mono.Zeroconf.Providers.Bonjour.dll
+C:\Users\felipe\Documents\drop-windows\Mono.Zeroconf-master\bin\Mono.Zeroconf.Providers.Bonjour.pdb
+C:\Users\felipe\Documents\drop-windows\Mono.Zeroconf-master\src\Mono.Zeroconf.Providers.Bonjour\obj\Debug\Mono.Zeroconf.Providers.Bonjour.csprojResolveAssemblyReference.cache
+C:\Users\felipe\Documents\drop-windows\Mono.Zeroconf-master\src\Mono.Zeroconf.Providers.Bonjour\obj\Debug\Mono.Zeroconf.Providers.Bonjour.dll
+C:\Users\felipe\Documents\drop-windows\Mono.Zeroconf-master\src\Mono.Zeroconf.Providers.Bonjour\obj\Debug\Mono.Zeroconf.Providers.Bonjour.pdb

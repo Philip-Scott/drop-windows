@@ -1,9 +1,0 @@
-c:\Users\integrant\documents\visual studio 2015\Projects\Drop\drop.Application\obj\Debug\Drop.Application.csprojResolveAssemblyReference.cache
-c:\Users\integrant\documents\visual studio 2015\Projects\Drop\drop.Application\bin\Debug\drop.Application.dll
-c:\Users\integrant\documents\visual studio 2015\Projects\Drop\drop.Application\bin\Debug\drop.Application.pdb
-c:\Users\integrant\documents\visual studio 2015\Projects\Drop\drop.Application\bin\Debug\log4net.dll
-c:\Users\integrant\documents\visual studio 2015\Projects\Drop\drop.Application\bin\Debug\log4net.xml
-c:\Users\integrant\documents\visual studio 2015\Projects\Drop\drop.Application\obj\Debug\drop.Application.dll
-c:\Users\integrant\documents\visual studio 2015\Projects\Drop\drop.Application\obj\Debug\drop.Application.pdb
-C:\Users\Integrant\Documents\Visual Studio 2015\Projects\Drop\drop.Application\bin\Debug\drop.Desktop.dll
-C:\Users\Integrant\Documents\Visual Studio 2015\Projects\Drop\drop.Application\bin\Debug\drop.Desktop.pdb

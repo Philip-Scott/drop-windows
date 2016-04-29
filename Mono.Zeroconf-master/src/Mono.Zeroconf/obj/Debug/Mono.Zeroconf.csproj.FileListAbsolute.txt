@@ -1,0 +1,5 @@
+C:\Users\felipe\Documents\drop-windows\Mono.Zeroconf-master\bin\Mono.Zeroconf.dll
+C:\Users\felipe\Documents\drop-windows\Mono.Zeroconf-master\bin\Mono.Zeroconf.pdb
+C:\Users\felipe\Documents\drop-windows\Mono.Zeroconf-master\src\Mono.Zeroconf\obj\Debug\Mono.Zeroconf.csprojResolveAssemblyReference.cache
+C:\Users\felipe\Documents\drop-windows\Mono.Zeroconf-master\src\Mono.Zeroconf\obj\Debug\Mono.Zeroconf.dll
+C:\Users\felipe\Documents\drop-windows\Mono.Zeroconf-master\src\Mono.Zeroconf\obj\Debug\Mono.Zeroconf.pdb
