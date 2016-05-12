@@ -9,41 +9,32 @@ using System.Threading.Tasks;
 using Microsoft.Win32;
 
 
-namespace Drop
-{
+namespace Drop {
     public class RegistryDrop {
 
         private RegistryKey _baseReg { get; set; }
-        public RegistryKey baseReg
-        {
-            get
-            {
+        public RegistryKey baseReg {
+            get {
                 return this._baseReg;
             }
 
-            set
-            {
+            set  {
                 this._baseReg = value;
             }
         }
 
         private RegistryKey _mainKey { get; set; }
-        public RegistryKey mainKey
-        {
-            get
-            {
+        public RegistryKey mainKey {
+            get {
                 return this._mainKey;
             }
 
-            set
-            {
+            set {
                 this._mainKey = value;
             }
         }
-
-
-        public RegistryDrop()
-        {
+        
+        public RegistryDrop() {
             this._baseReg = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
             this.baseReg.CreateSubKey("Software\\Test");
             this._mainKey = Registry.ClassesRoot.CreateSubKey(@"*\shell\Drop to the");
@@ -51,19 +42,15 @@ namespace Drop
             this._mainKey.SetValue("Position", "Bottom");
         }
 
-        public void deleteAllPartners()
-        {
+        public void deleteAllPartners() {
             this._baseReg.DeleteSubKey("Software\\Test");
             Registry.ClassesRoot.DeleteSubKey(@"*\shell\Drop to the");
         }
 
-        public bool deletePartnerEntry(string hostName)
-        {
+        public bool deletePartnerEntry(string hostName) {
             object stringKeySubcommands = this._mainKey.GetValue("SubCommands");
-            try
-            {
-                if (stringKeySubcommands != null)
-                {
+            try {
+                if (stringKeySubcommands != null) {
                     this._mainKey.SetValue("SubCommands", stringKeySubcommands.ToString().Replace((";" + hostName), String.Empty));
                     this._baseReg.DeleteSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\" + hostName);
                     this._baseReg.DeleteSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\" + hostName + "\\command");
@@ -71,18 +58,15 @@ namespace Drop
          
                 return true;
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 return false;
             }
         }
 
-        public bool AddPartnerEntry(string hostName)
-        {
+        public bool AddPartnerEntry(string hostName) {
             object stringKeySubcommands=this._mainKey.GetValue("SubCommands");
 
-            try
-            {
+            try {
                 if (stringKeySubcommands != null)
                     this._mainKey.SetValue("SubCommands", stringKeySubcommands.ToString() + ";" + hostName);               
                 else
@@ -91,29 +75,19 @@ namespace Drop
                 this._baseReg.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\" + hostName + "\\command").SetValue("", @"Notepad.exe");
 
                 return true;
-            }catch(Exception ex)
-            {
+            } catch(Exception ex) {
                 return false;
             }
            
         }
 
-        public bool addAllParterns(List<TransmissionPartner> users)
-        {
-            try
-            {
+        public bool addAllParterns(List<TransmissionPartner> users) {
+            try {
                 users.ForEach(user => AddPartnerEntry(user.name));
                 return true;
-            }
-            catch(Exception ex)
-            {
+            } catch(Exception ex) {
                 return false;
             }
         }
     }
-
-   
-
-
-
 }

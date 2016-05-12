@@ -1,1 +1,12 @@
 C:\Users\Integrant\Desktop\drop\Drop\obj\Debug\Drop.csprojResolveAssemblyReference.cache
+C:\Users\felipe\Documents\drop-windows\Drop\obj\Debug\Drop.csprojResolveAssemblyReference.cache
+C:\Users\felipe\Documents\drop-windows\Drop\obj\Debug\Drop.ProjectInstaller.resources
+C:\Users\felipe\Documents\drop-windows\Drop\obj\Debug\Drop.csproj.GenerateResource.Cache
+C:\Users\felipe\Documents\drop-windows\Drop\bin\Debug\Drop.dll
+C:\Users\felipe\Documents\drop-windows\Drop\bin\Debug\Drop.pdb
+C:\Users\felipe\Documents\drop-windows\Drop\bin\Debug\Mono.Zeroconf.dll
+C:\Users\felipe\Documents\drop-windows\Drop\bin\Debug\Mono.Zeroconf.Providers.Bonjour.dll
+C:\Users\felipe\Documents\drop-windows\Drop\bin\Debug\Mono.Zeroconf.Providers.Bonjour.pdb
+C:\Users\felipe\Documents\drop-windows\Drop\bin\Debug\Mono.Zeroconf.pdb
+C:\Users\felipe\Documents\drop-windows\Drop\obj\Debug\Drop.dll
+C:\Users\felipe\Documents\drop-windows\Drop\obj\Debug\Drop.pdb

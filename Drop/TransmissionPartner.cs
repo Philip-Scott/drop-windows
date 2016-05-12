@@ -1,15 +1,66 @@
-﻿using System;
+﻿using Mono.Zeroconf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Drop { 
+namespace Drop {
+
+    public delegate void PartnerReady(TransmissionPartner partner);
 
     /// <summary>
     /// Represents a transmission partner you can connect to.
     /// </summary>
-    public class TransmissionPartner {
+    public class TransmissionPartner : Object{
+        private Mono.Zeroconf.ServiceBrowseEventArgs partner;
+
+        public event PartnerReady partner_ready;
+        public bool ready = false;
+        public bool added = false;
+
+        public TransmissionPartner() { }
+
+        /// <summary>
+        /// Forms a Transmission Partner from a TxtRecord
+        /// </summary>
+        /// <param name="record"></param>
+        public TransmissionPartner(Mono.Zeroconf.ServiceBrowseEventArgs partner_) {
+            this.partner = partner_;
+            
+            this.partner.Service.Resolved += delegate (object o, ServiceResolvedEventArgs handeler) {
+                this.populate_partner(handeler.Service.TxtRecord);
+            };
+        }
+
+        public void resolve ()
+        {
+            this.partner.Service.Resolve();
+        }
+
+        private void populate_partner(ITxtRecord record) {
+            
+              for (int n = 0; n < record.Count; n++) {
+                 var item = record.GetItemAt(n);
+                 switch (item.Key) {
+                     case "display-name": this.name = item.ValueString; break;
+                     case "server-enabled": this.server_enabled = item.ValueString == "true"; break;
+                     case "protocol-implementation": this.procotol_implementation = item.ValueString; break;
+                     case "unencrypted-port": this.unencrypeted_port = UInt16.Parse(item.ValueString); break;
+                     case "protocol-version": this.protocol_implementation = int.Parse(item.ValueString); break;
+                 }
+
+                //hostname = this.partner.Service.;
+                //hostname = this.partner.Service.
+            }
+
+            ready = true;
+
+            if (partner_ready != null) {
+                partner_ready(this);
+            }
+        }
+
         /// <summary>
         /// The name of the transmission partner, acting as an ID.
         /// </summary>
@@ -50,5 +101,4 @@ namespace Drop {
         /// </summary>
         public bool server_enabled;
     }
-
 }
