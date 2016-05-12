@@ -12,3 +12,6 @@ c:\users\integrant\documents\visual studio 2015\Projects\Drop\Drop\bin\Debug\dro
 c:\users\integrant\documents\visual studio 2015\Projects\Drop\Drop\bin\Debug\log4net.xml
 C:\Users\Integrant\Documents\Visual Studio 2015\Projects\Drop\Drop\bin\Debug\drop.Desktop.dll
 C:\Users\Integrant\Documents\Visual Studio 2015\Projects\Drop\Drop\bin\Debug\drop.Desktop.pdb
+C:\Users\Integrant\Desktop\drop-windows\Drop\bin\Debug\Drop.exe.config
+C:\Users\Integrant\Desktop\drop-windows\Drop\obj\Debug\Drop.exe
+C:\Users\Integrant\Desktop\drop-windows\Drop\obj\Debug\Drop.pdb
