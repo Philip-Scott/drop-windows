@@ -45,7 +45,7 @@ namespace Drop
                     return;
 
                 var header = new byte[2];
-
+                
                 header[0] = (byte)((package_length >> 8) & 0xff);
                 header[1] = (byte)(package_length & 0xff);
 
@@ -62,7 +62,6 @@ namespace Drop
         {
             try
             {
-                int header_length;
                 var header = new byte[2];
 
                 input_stream.Read(header, 0, 2);
@@ -71,7 +70,7 @@ namespace Drop
 
                 if (expected_package_length < expected_min_length)
                 {
-                    //return null;
+                    return null;
                 }
 
                 var package = new byte[expected_package_length];
