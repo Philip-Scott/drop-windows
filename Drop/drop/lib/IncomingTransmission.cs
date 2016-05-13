@@ -23,10 +23,25 @@ namespace Drop.lib
 
         public struct FileRequest
         {
-            //uint16 id;
-            //uint64 size;
+            System.UInt16 id;
+            System.UInt16 size;
             string name;
             bool accepted;
         }
+
+        public void protocol_failed(string error_message);
+        public void state_changed(ServerState state);
+        public void progress_changed(System.UInt64 bytes_received, System.UInt64 total_size);
+        public void file_received(uint id, string filename);
+
+        private bool is_secure = false;
+        private ServerState state = ServerState.AWAITING_INITIALISATION;
+
+        private System.SByte client_version;
+        private string client_name;
+        private Gee.HashMap< System.UInt16, FileRequest?> file_requests;
+
+
+
     }
 }
