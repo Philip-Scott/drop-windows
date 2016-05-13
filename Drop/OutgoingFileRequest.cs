@@ -9,7 +9,7 @@ namespace Drop
     /// <summary>
     /// Represents a file request of an outgoing transmission.
     /// </summary>
-    class OutgoingFileRequest
+    public class OutgoingFileRequest
     {
         /// <summary>
         /// Id of the file
@@ -19,7 +19,7 @@ namespace Drop
         /// <summary>
         /// The file size
         /// </summary>
-        public UInt64 size;
+        public long size;
 
         /// <summary>
         /// The name of the file

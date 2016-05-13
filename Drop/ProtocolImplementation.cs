@@ -29,33 +29,40 @@ namespace Drop
             this.output_stream = output_stream;
         }
 
-        public void connect(string server_ip, int port = 2004)
+        public bool connect(string hostname, int port = 7432)
         {
-            var client = new TcpClient(server_ip, port);
+            //IPHostEntry host_info = Dns.GetHostEntry(hostname);
+            //IPAddress[] addreces = host_info.AddressList;
+
+            //if (addreces.Length < 0) return false;
+
+            var client = new TcpClient("192.168.100.120", port);
             input_stream = client.GetStream();
             output_stream = client.GetStream();
+
+            return true;
         }
-        public async void send_package(byte[] data)
+        public bool send_package(byte[] data)
         {
-            try
-            {
+            try {
                 var package_length = (UInt16)data.Length;
 
                 if (package_length > MAX_PACKAGE_LENGTH)
-                    return;
+                    return false;
 
                 var header = new byte[2];
                 
                 header[0] = (byte)((package_length >> 8) & 0xff);
                 header[1] = (byte)(package_length & 0xff);
 
-                await output_stream.WriteAsync(header, 0, 2);
-                await output_stream.WriteAsync(data, 0, data.Length);
-            }
-            catch (Exception ex)
-            {
+                output_stream.WriteAsync(header, 0, 2);
+                output_stream.WriteAsync(data, 0, data.Length);
+            } catch (Exception ex) {
                 log(ex.Message);
+                return false;
             }
+
+            return true;
         }
 
         public byte[] receive_package(UInt16 expected_min_length = 1)

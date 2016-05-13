@@ -35,6 +35,10 @@ namespace Drop {
         }
         
         public RegistryDrop() {
+           
+        }
+
+        public void init() {
             this._baseReg = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
             this.baseReg.CreateSubKey("Software\\Test");
             this._mainKey = Registry.ClassesRoot.CreateSubKey(@"*\shell\Drop to the");
@@ -63,7 +67,7 @@ namespace Drop {
             }
         }
 
-        public bool AddPartnerEntry(string hostName) {
+        public bool AddPartnerEntry(string name, string hostName) {
             object stringKeySubcommands=this._mainKey.GetValue("SubCommands");
 
             try {
@@ -71,8 +75,10 @@ namespace Drop {
                     this._mainKey.SetValue("SubCommands", stringKeySubcommands.ToString() + ";" + hostName);               
                 else
                     this._mainKey.SetValue("SubCommands", hostName);
-                this._baseReg.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\" + hostName).SetValue("", hostName);
-                this._baseReg.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\" + hostName + "\\command").SetValue("", @"Notepad.exe");
+                this._baseReg.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\" + hostName).SetValue("", name);
+                this._baseReg.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\" + hostName + "\\command").SetValue("", @"C:\Users\felipe\Documents\drop-windows\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe " + hostName + " %1");
+                this._baseReg.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\" + hostName + "\\MultiSelectModel").SetValue("","Player");
+
 
                 return true;
             } catch(Exception ex) {
@@ -83,7 +89,7 @@ namespace Drop {
 
         public bool addAllParterns(List<TransmissionPartner> users) {
             try {
-                users.ForEach(user => AddPartnerEntry(user.name));
+                users.ForEach(user => AddPartnerEntry(user.name, user.hostname));
                 return true;
             } catch(Exception ex) {
                 return false;

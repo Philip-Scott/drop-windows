@@ -50,8 +50,7 @@ namespace Drop {
                      case "protocol-version": this.protocol_implementation = int.Parse(item.ValueString); break;
                  }
 
-                //hostname = this.partner.Service.;
-                //hostname = this.partner.Service.
+                hostname = this.partner.Service.Name + ".local";
             }
 
             ready = true;
