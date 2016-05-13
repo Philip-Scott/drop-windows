@@ -57,6 +57,78 @@ namespace Drop.lib
         {
             
         }
+        
+        public int start_transmission(string hostname, string[] files) {
+            if (!connect(hostname, 7432)) return 0;
+
+            Thread.Sleep(100);
+            //new Thread<int>(null, () => {
+            if (!load_files(files))
+                {
+                    update_state(ClientState.FAILURE);
+
+                    return 1;
+                }
+            Thread.Sleep(100);
+                update_state(ClientState.SENDING_INITIALISATION);
+
+                if (!send_initialisation("Windows User 1")) //TODO: Get client name
+                {
+                    //protocol_failed(_("Sending initialisation failed."));
+                    update_state(ClientState.FAILURE);
+
+                    return 2;
+                }
+            Thread.Sleep(100);
+            update_state(ClientState.AWAITING_INITIALISATION);
+
+                if (!receive_initialisation())
+                {
+                    //protocol_failed(_("Receiving initialisation failed."));
+                    update_state(ClientState.FAILURE);
+
+                    return 3;
+                }
+
+            Thread.Sleep(100);
+            update_state(ClientState.SENDING_REQUEST);
+
+                if (!send_request(this.file_requests))
+                {
+                    //protocol_failed(_("Sending request failed."));
+                    update_state(ClientState.FAILURE);
+
+                    return 4;
+                }
+
+            Thread.Sleep(100);
+            update_state(ClientState.AWAITING_CONFIRMATION);
+
+                if (!receive_confirmation())
+                {
+                    //protocol_failed(_("Receiving confirmation failed."));
+                    update_state(ClientState.FAILURE);
+
+                    return 5;
+                }
+
+                //if (state == ClientState.SENDING_DATA)
+                {
+                    if (!send_data())
+                    {
+                        //protocol_failed(_("Sending files failed."));
+                        update_state(ClientState.FAILURE);
+
+                        return 6;
+                    }
+
+                    update_state(ClientState.FINISHED);
+                }
+
+                return 7;
+            //});
+
+        }
 
         public void cancel()
         {
