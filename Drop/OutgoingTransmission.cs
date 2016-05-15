@@ -11,7 +11,7 @@ namespace Drop
     /// <summary>
     /// This class represents an outgoing transmission used to send files to another computer.
     /// </summary>
-    class OutgoingTransmission /*: ProtocolImplementation*/
+    class OutgoingTransmission : ProtocolImplementation
     {
         public enum ClientState : byte {
             LOADING_FILES,
@@ -46,17 +46,13 @@ namespace Drop
         {
             // base construction
             this.is_secure = is_secure;
-
-
         }
 
         public void cancel()
         {
             Console.WriteLine("Protocol canceled.");
 
-            // cancellable
-
-            //update_state(ClientState.CANCELED);
+           // update_state(ClientState.CANCELED);
         }
 
         public bool get_is_secure ()
@@ -130,14 +126,14 @@ namespace Drop
 
         private bool recieve_initialisation ()
         {
-            UInt16[] package = receive_package(2);
+            byte[] package = receive_package(2);
 
-            if (package == null)
+            //if (package == null)
             {
                 return false;
             }
 
-            return send_package(package);
+            return false;// send_package(package);
         }
     }
 

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
+using System.Security;
+using System.ServiceProcess;
 
 namespace Drop {
     public delegate void partner_added(Drop.TransmissionPartner partner);
@@ -11,7 +14,6 @@ namespace Drop {
     /// Creates a new Session.
     /// </summary>
     public class Session {
-
         public event partner_added new_partner_signal;
 
         //public event void new_incomming_transmission (IncomingTransmission incoming_transmission);
@@ -19,9 +21,7 @@ namespace Drop {
         //public event void transmission_partner_added (TransmissionPartner new_partner);
         //public event void transmission_partner_removed (string name);
 
-        public static void main() {
-            var session = new Session();
-            var partners = session.get_transmission_partners();
+        public Session() {
         }
 
         /// <summary>
